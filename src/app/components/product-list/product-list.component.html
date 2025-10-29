@@ -1,0 +1,45 @@
+<ion-list>
+  <ion-item *ngFor="let product of products">
+    <ion-thumbnail slot="start">
+      <img [src]="product.image" alt="Product image" class="profile-image" />
+    </ion-thumbnail>
+
+    <!-- info  product -->
+    <ion-label>
+      <h2>{{ product.title }}</h2>
+      <h3>{{ product.category }}</h3>
+      <p>{{ product.description }}</p>
+      <h3>${{ product.price }}</h3>
+
+      <!-- muestra cantidad añadida si esta en el carrito -->
+      <p *ngIf="context === 'cart' && 'quantity'; in: product">
+        Cantidad: {{ product.quantity }}
+      </p>
+    </ion-label>
+
+    <!-- no mostrar botones si esta en cear prod -->
+    <div slot="end" *ngIf="context !== 'create-product'"></div>
+
+    <ng-container *ngIf="context === 'market'">
+      <ion-button slot="end" (click)="addToCart.emit(product)">
+        Add to Cart
+      </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="context === 'cart'">
+      <ion-button slot="end" (click)="decreaseQuantity.emit(product)"
+        >-</ion-button
+      >
+      <ion-button slot="end" (click)="increaseQuantity.emit(product)"
+        >+</ion-button
+      >
+      <ion-button
+        slot="end"
+        color="danger"
+        (click)="removeFromCart.emit(product)"
+      >
+        Remove
+      </ion-button>
+    </ng-container>
+  </ion-item>
+</ion-list>

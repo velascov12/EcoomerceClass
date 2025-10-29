@@ -1,37 +1,248 @@
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * ================================
+ * 🌍 GLOBAL APP STYLES
+ * ================================
+ * Ionic + estilos limpios y minimalistas
+ * -------------------------------
  */
 
-/* Core CSS required for Ionic components to work properly */
+/* === CORE & BASICS === */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* === OPTIONAL UTILS === */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* === DARK MODE === */
+@import "@ionic/angular/css/palettes/dark.system.css";
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* ======================================
+   🌐 PERFIL DE USUARIO
+   ====================================== */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.profile-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 10%; /* redonda */
+  object-fit: cover;
+  border: 0px solid #6197f4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+.logo-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%; /* redonda */
+  object-fit: cover;
+  border: 3px solid #6197f4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+}
+
+.title-card {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  color: #196cfa;
+}
+
+.profile-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin: 8px 0;
+}
+
+// .icon-profile {
+//   font-size: 22px;
+//   color: #ff38c3;
+// }
+
+ion-label h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f1f1f1;
+}
+
+// ion-label p {
+//   margin: 0;
+//   font-size: 0.9rem;
+//   color: #cc01e7;
+// }
+
+/* ======================================
+   🛒 PRODUCTOS Y LISTAS
+   ====================================== */
+ion-list {
+  padding: 12px;
+}
+
+ion-item {
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: rgba(246, 18, 18, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+ion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgb(5, 5, 5);
+}
+
+/* Miniaturas - Rectangulares verticales */
+ion-thumbnail {
+  width: 100px;
+  height: 130px;
+  margin-right: 14px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1px;
+  background-color: #f5f5f5;
+  border: 1px solid #5292ffdf;
+}
+
+ion-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Se ajusta bien sin deformarse */
+  border-radius: 0px;
+  transition: transform 0.3s ease;
+}
+
+ion-thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+/* Información del producto */
+ion-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+ion-label h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f1f1f1;
+  margin: 0;
+}
+
+ion-label h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+ion-label p {
+  font-size: 0.85rem;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+/* Precio */
+.price-label,
+ion-label h3:last-of-type {
+  color: #4ea8ff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Contenedor de acciones */
+div[slot="end"],
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Botones */
+ion-button {
+  --border-radius: 8px;
+  font-size: 0.85rem;
+  height: 36px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+ion-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ======================================
+   ⚠️ VALIDACIONES Y ERRORES
+   ====================================== */
+.invalid-input {
+  border-bottom: 2px solid #eb445a !important;
+}
+
+.error-message {
+  color: #eb445a;
+  font-size: 0.75rem;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+::ng-deep ion-input input::placeholder {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ======================================
+   📱 RESPONSIVE
+   ====================================== */
+@media (max-width: 600px) {
+  ion-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  ion-thumbnail {
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+    margin-bottom: 1px;
+  }
+
+  div[slot="end"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  ion-button {
+    flex: 1;
+  }
+}

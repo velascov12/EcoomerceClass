@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Market</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCart()">
+        <ion-icon name="mail"></ion-icon>cart
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p>Productos en Market: {{ products.length }}</p>
+
+  <app-product-list
+    [products]="products"
+    [context]="'market'"
+    (addToCart)="handleAdd($event)"
+  >
+  </app-product-list>
+</ion-content>

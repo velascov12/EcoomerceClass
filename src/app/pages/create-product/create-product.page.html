@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create & List Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <app-create-product (productCreated)="addProduct($event)"></app-create-product>
+
+  <hr />
+
+
+  <app-product-list [products]="products" [context]="'create-product'"></app-product-list>
+</ion-content>

@@ -1,0 +1,161 @@
+<form [formGroup]="productForm" class="product-form">
+  <ion-item>
+    <ion-label>Title</ion-label>
+    <ion-input
+      formControlName="title"
+      placeholder="3-100 caracteres"
+      [class.invalid-input]="
+        productForm.get('title')?.invalid && productForm.get('title')?.touched
+      "
+    ></ion-input>
+  </ion-item>
+  <div
+    class="error-message"
+    *ngIf="
+      productForm.get('title')?.hasError('required') &&
+      productForm.get('title')?.touched
+    "
+  >
+    El título es requerido
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('title')?.hasError('minlength')"
+  >
+    El título debe tener al menos 3 caracteres
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('title')?.hasError('maxlength')"
+  >
+    El título no puede tener más de 100 caracteres
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Price</ion-label>
+    <ion-input
+      type="number"
+      formControlName="price"
+      placeholder="0.01 - 999,999.99"
+      [class.invalid-input]="
+        productForm.get('price')?.invalid && productForm.get('price')?.touched
+      "
+    ></ion-input>
+  </ion-item>
+  <div
+    class="error-message"
+    *ngIf="
+      productForm.get('price')?.hasError('required') &&
+      productForm.get('price')?.touched
+    "
+  >
+    El precio es requerido
+  </div>
+  <div class="error-message" *ngIf="productForm.get('price')?.hasError('min')">
+    El precio debe ser mayor a 0
+  </div>
+
+  <!-- DESCRIPTION -->
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-input
+      formControlName="description"
+      placeholder="50-1000 caracteres"
+      [class.invalid-input]="
+        productForm.get('description')?.invalid &&
+        productForm.get('description')?.touched
+      "
+    ></ion-input>
+  </ion-item>
+  <div
+    class="error-message"
+    *ngIf="
+      productForm.get('description')?.hasError('required') &&
+      productForm.get('description')?.touched
+    "
+  >
+    La descripción es requerida
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('description')?.hasError('minlength')"
+  >
+    La descripción debe tener al menos 50 caracteres
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('description')?.hasError('maxlength')"
+  >
+    La descripción no puede tener más de 1000 caracteres
+  </div>
+
+  <!-- CATEGORY -->
+  <ion-item>
+    <ion-label position="floating">Category</ion-label>
+    <ion-input
+      formControlName="category"
+      placeholder="3-20 caracteres, solo letras"
+      [class.invalid-input]="
+        productForm.get('category')?.invalid &&
+        productForm.get('category')?.touched
+      "
+    ></ion-input>
+  </ion-item>
+  <div
+    class="error-message"
+    *ngIf="
+      productForm.get('category')?.hasError('required') &&
+      productForm.get('category')?.touched
+    "
+  >
+    La categoría es requerida
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('category')?.hasError('minlength')"
+  >
+    La categoría debe tener al menos 3 caracteres
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('category')?.hasError('maxlength')"
+  >
+    La categoría no puede tener más de 20 caracteres
+  </div>
+
+  <!-- IMAGE URL -->
+  <ion-item>
+    <ion-label>Image URL</ion-label>
+    <ion-input
+      formControlName="image"
+      placeholder="http:// o https://"
+      [class.invalid-input]="
+        productForm.get('image')?.invalid && productForm.get('image')?.touched
+      "
+    ></ion-input>
+  </ion-item>
+  <div
+    class="error-message"
+    *ngIf="
+      productForm.get('image')?.hasError('required') &&
+      productForm.get('image')?.touched
+    "
+  >
+    La URL de la imagen es requerida
+  </div>
+  <div
+    class="error-message"
+    *ngIf="productForm.get('image')?.hasError('pattern')"
+  >
+    (http:// o https://) con extensión de imagen
+  </div>
+
+  <ion-button
+    expand="block"
+    (click)="addProduct()"
+    [disabled]="!productForm.valid"
+    class="submit-button"
+  >
+    Add Product
+  </ion-button>
+</form>

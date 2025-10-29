@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="profile-container">
+    <div class="profile-photho-container">
+      <img src="{{user.img}}" alt="profile photo" class="logo-avatar" />
+    </div>
+    <ion-card class="profile-card">
+      <ion-card-header>
+        <ion-card-title class="title-card"> Profile </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Nombre</h3>
+            <p>{{user.name}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Apellido</h3>
+            <p>{{user.lastname}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Email</h3>
+            <p>{{user.email}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Profesion</h3>
+            <p>{{user.degree}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Fecha de Nacimiento</h3>
+            <p>{{user.born}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" class="profile-item">
+          <ion-icon name="person" slot="start" class="icon-profile"></ion-icon>
+          <ion-label>
+            <h3>Pais</h3>
+            <p>{{user.country}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Two-way binding con [(ngModel)] -->
+    <ion-item>
+      <ion-label position="stacked">Ingresa un dato:</ion-label>
+      <ion-input
+        [(ngModel)]="dato"
+        [disabled]="active"
+        placeholder="Escribe algo aquí..."
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <h3>Valor actual:</h3>
+        <p>{{ dato || 'No hay datos ingresados' }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-button (click)="inactivar()">
+      {{active ? 'Activar Input' : 'Desactivar Input'}}
+    </ion-button>
+  </div>
+
+  <ion-button (click)="imprimir()" expand="block" fill="solid">
+    Mostrar Dato en Alert
+  </ion-button>
+</ion-content>

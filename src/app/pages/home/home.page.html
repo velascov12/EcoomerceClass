@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="header-section">
+
+    <ion-avatar class="logo-avatar">
+      <img [src]="logoUrl" alt="Logo" />
+    </ion-avatar>
+
+
+    <ion-text>
+      <h2>{{ nombreAplicacion }}</h2>
+    </ion-text>
+  </div>
+
+
+  <ion-card>
+    <ion-card-content>
+      <form>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>Usuario</h3>
+            <p>Ingresa tu usuario</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="usuario"
+            name="usuario"
+            placeholder="Usuario"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>Dirección Entrega</h3>
+            <p>Ingresa tu dirección de entrega</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="direccionEntrega"
+            name="direccionEntrega"
+            placeholder="Dirección"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>País</h3>
+            <p>Ingresa tu país</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="pais"
+            name="pais"
+            placeholder="País"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>Ciudad</h3>
+            <p>Ingresa tu ciudad</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="ciudad"
+            name="ciudad"
+            placeholder="Ciudad"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>Idioma</h3>
+            <p>Selecciona tu idioma</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="idioma"
+            name="idioma"
+            placeholder="Idioma"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <ion-item class="profile-item">
+          <ion-label position="stacked">
+            <h3>Moneda</h3>
+            <p>Selecciona tu moneda</p>
+          </ion-label>
+          <ion-input
+            [(ngModel)]="moneda"
+            name="moneda"
+            placeholder="Moneda"
+            type="text">
+          </ion-input>
+        </ion-item>
+
+
+        <div class="button-container">
+          <ion-button
+            expand="block"
+            color="primary"
+            (click)="guardarFormulario()">
+            Guardar
+          </ion-button>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
