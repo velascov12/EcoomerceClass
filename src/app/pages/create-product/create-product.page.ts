@@ -40,7 +40,7 @@ export class CreateProductPage {
     this.productService.setNewProd(product).subscribe({
       next: (newProduct) => {
         alert(`producto agregado correctamente: ${newProduct.title}`);
-        this.productService.addProduct(newProduct);
+        this.productService.addProduct(product);
       },
       error: (error) => {
         console.error('Error creando producto:', error);

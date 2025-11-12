@@ -11,8 +11,12 @@
       <p>{{ product.description }}</p>
       <h3>${{ product.price }}</h3>
 
-      <!-- muestra cantidad añadida si esta en el carrito -->
-      <p *ngIf="context === 'cart' && 'quantity'; in: product">
+      <p *ngIf="product.rating">
+        Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)
+      </p>
+
+      <!-- muestra cantidad added si esta en el carrito -->
+      <p *ngIf="context === 'cart' && hasQuantity(product)">
         Cantidad: {{ product.quantity }}
       </p>
     </ion-label>

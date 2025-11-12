@@ -13,6 +13,8 @@ import {
   IonInput,
   IonButton,
   IonLabel,
+  IonItemGroup,
+  IonItemDivider,
 } from '@ionic/angular/standalone';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { Title } from '@angular/platform-browser';
@@ -30,6 +32,8 @@ import { Title } from '@angular/platform-browser';
     IonButton,
     ReactiveFormsModule,
     IonLabel,
+    IonItemGroup,
+    IonItemDivider,
   ],
 })
 export class CreateProductComponent {
@@ -67,10 +71,24 @@ export class CreateProductComponent {
   createForm() {
     this.productForm = this.fb.group({
       id: [Date.now()],
-      title: ['', [Validators.required, Validators.maxLength(60)]],
-      price: [0, [Validators.required, Validators.min(0.01)]],
-      description: ['', [Validators.required, Validators.minLength(50)]],
-      category: ['', [Validators.required, Validators.maxLength(20)]],
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(60),
+        ],
+      ],
+      price: [, [Validators.required, Validators.min(0.01)]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+      category: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
       image: [
         '',
         [
@@ -80,6 +98,10 @@ export class CreateProductComponent {
           ),
         ],
       ],
+      rating: this.fb.group({
+        rate: [, [Validators.min(0), Validators.max(5)]],
+        count: [, [Validators.min(0), Validators.max(10000)]],
+      }),
     });
   }
 

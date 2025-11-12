@@ -13,7 +13,7 @@ import {
 import { ProductListComponent } from '../../components/product-list/product-list.component';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { ProductService } from 'src/app/data/services/product-service';
-import { CartService } from 'src/app/data/services/cart-service';
+// import { ProductService } from 'src/app/data/services/cart-service';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { cart, cartOutline } from 'ionicons/icons';
@@ -42,7 +42,7 @@ export class MarketPage implements OnInit {
   newProducts: Product[] = [];
 
   private productService = inject(ProductService);
-  private cartService = inject(CartService);
+  private ProductService = inject(ProductService);
 
   constructor(private router: Router) {}
 
@@ -53,7 +53,7 @@ export class MarketPage implements OnInit {
   ionViewWillEnter() {}
 
   handleAdd(product: Product) {
-    this.cartService.addToCart(product);
+    this.ProductService.addToCart(product);
     window.alert('Producto agregado al carrito');
   }
 

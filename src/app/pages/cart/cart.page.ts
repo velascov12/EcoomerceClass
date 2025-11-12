@@ -1,24 +1,39 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar ,IonButton} from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonButton,
+} from '@ionic/angular/standalone';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { CartItem } from 'src/app/interfaces/CartItemModel';
-import { CartService } from 'src/app/data/services/cart-service';
+// import { ProductService } from 'src/app/data/services/cart-service';
 
 import { ProductListComponent } from 'src/app/components/product-list/product-list.component';
+import { ProductService } from 'src/app/data/services/product-service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,ProductListComponent,IonButton ]
+  imports: [
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    ProductListComponent,
+    IonButton,
+  ],
 })
 export class CartPage implements OnInit {
- 
-  constructor() { }
-    private cartService = inject(CartService);
+  constructor() {}
+  private ProductService = inject(ProductService);
 
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
@@ -33,28 +48,27 @@ export class CartPage implements OnInit {
   }
 
   loadCart() {
-    this.cartItems = this.cartService.getCartItems();
-    this.totalPrice = this.cartService.getTotalPrice();
-    this.totalItems = this.cartService.getTotalItems();
+    this.cartItems = this.ProductService.getCartItems();
+    this.totalPrice = this.ProductService.getTotalPrice();
+    this.totalItems = this.ProductService.getTotalItems();
   }
 
   handleRemove(product: Product) {
-  this.cartService.removeFromCart(product.id);
-  this.loadCart();
+    this.ProductService.removeFromCart(product.id);
+    this.loadCart();
   }
 
   handleIncrease(product: Product) {
-    this.cartService.increaseQuantity(product.id);
+    this.ProductService.increaseQuantity(product.id);
     this.loadCart();
   }
 
   handleDecrease(product: Product) {
-    this.cartService.decreaseQuantity(product.id);
+    this.ProductService.decreaseQuantity(product.id);
     this.loadCart();
   }
   handleClearCart() {
-      this.cartService.clearCart();
-      this.loadCart();
-    }
-
+    this.ProductService.clearCart();
+    this.loadCart();
+  }
 }

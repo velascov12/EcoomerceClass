@@ -28,4 +28,8 @@ export class ProductListComponent {
   @Output() decreaseQuantity = new EventEmitter<Product>();
 
   constructor() {}
+
+  hasQuantity(product: Product | CartItem): product is CartItem {
+    return 'quantity' in product;
+  }
 }
