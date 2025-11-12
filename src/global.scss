@@ -202,9 +202,6 @@ ion-button:hover {
   filter: brightness(1.1);
 }
 
-/* ======================================
-   ⚠️ VALIDACIONES Y ERRORES
-   ====================================== */
 .invalid-input {
   border-bottom: 2px solid #eb445a !important;
 }
@@ -220,29 +217,73 @@ ion-button:hover {
   font-size: 0.85rem;
   opacity: 0.6;
 }
-
 /* ======================================
-   📱 RESPONSIVE
+   📱 Responsive: Solo Productos (≤600px)
    ====================================== */
 @media (max-width: 600px) {
-  ion-item {
-    flex-direction: column;
-    align-items: flex-start;
+  /* 🔹 Ítems de producto */
+  ion-list ion-item,
+  ion-list ion-item::part(native) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 12px !important;
+    background: var(--ion-color-light, #fff) !important; /* fondo limpio */
+    --background: var(
+      --ion-color-light,
+      #fff
+    ) !important; /* evita fondo rojizo */
+    --ion-item-background: var(--ion-color-light, #fff) !important;
+    --ripple-color: transparent !important; /* quita el efecto rojo/café */
   }
 
-  ion-thumbnail {
-    width: 100%;
-    height: 200px;
-    margin-right: 0;
-    margin-bottom: 1px;
+  /* 🔹 Imagen del producto */
+  ion-list ion-thumbnail {
+    width: 100% !important;
+    height: 180px !important;
+    margin: 0 0 12px 0 !important;
   }
 
-  div[slot="end"] {
-    width: 100%;
-    margin-top: 10px;
+  ion-list ion-thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
   }
 
-  ion-button {
-    flex: 1;
+  /* 🔹 Texto del producto */
+  ion-list ion-label {
+    width: 100% !important;
+    display: block !important;
+    color: var(--ion-text-color, #222) !important;
+  }
+
+  ion-list ion-label h2,
+  ion-list ion-label h3,
+  ion-list ion-label p {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  /* 🔹 Acciones */
+  ion-list .product-actions,
+  ion-list div[slot="end"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+    position: relative !important;
+  }
+
+  ion-list ion-button {
+    flex: 1 !important;
+    min-width: 70px !important;
+    margin: 0 !important;
+  }
+
+  ion-list ion-button[color="danger"] {
+    flex-basis: 100% !important;
   }
 }

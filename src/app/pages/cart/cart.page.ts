@@ -44,7 +44,7 @@ export class CartPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.loadCart();
+    // this.loadCart();
   }
 
   loadCart() {

@@ -11,16 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
- 
   <app-product-list
-  [products]="cartItems"
-  [context]="'cart'"
-  (removeFromCart)="handleRemove($event)"
-  (increaseQuantity)="handleIncrease($event)"
-  (decreaseQuantity)="handleDecrease($event)">
-</app-product-list>
+    [products]="cartItems"
+    [context]="'cart'"
+    (removeFromCart)="handleRemove($event)"
+    (increaseQuantity)="handleIncrease($event)"
+    (decreaseQuantity)="handleDecrease($event)"
+  >
+  </app-product-list>
 
- <div class="summary">
+  <div class="summary">
     <h2>Total de productos: {{ totalItems }}</h2>
     <h2>Total a pagar: ${{ totalPrice }}</h2>
 
@@ -28,5 +28,4 @@
       Vaciar carrito
     </ion-button>
   </div>
-
 </ion-content>
